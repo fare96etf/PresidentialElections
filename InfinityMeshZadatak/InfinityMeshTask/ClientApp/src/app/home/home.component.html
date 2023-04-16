@@ -1,0 +1,34 @@
+<div>
+  <h1>Presidential election results</h1>
+  <div>
+    <input type="file" class="upload" (change)="noviUpload($event.target.files)">
+  </div>
+  <div class="checkbox">
+    <label>
+        <input #Overide="ngModel" [(ngModel)]="overide" type="checkbox">Override
+    </label>
+  </div>
+  <div style="margin-top: 20px;" *ngFor="let izbor of izbori">
+    <h3>{{ izbor.naziv }}</h3>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Votes</th>
+        <th scope="col">Percentage</th>
+        <th scope="col">Error</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let kandidat of izbor.kandidati; index as i">
+        <td>{{ kandidat.naziv }}</td>
+        <td>{{ kandidat.brojGlasova }}</td>
+        <td>{{ kandidat.udio }}<span *ngIf="kandidat.udio != 'N/A'">%</span></td>
+        <td>
+          <span *ngIf="kandidat.udio == 'N/A';else other">{{ kandidat.greska }}</span> 
+          <ng-template #other>-</ng-template>
+        </td>
+      </tbody>
+    </table>
+  </div>
+</div>

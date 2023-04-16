@@ -1,0 +1,17 @@
+.centriraj {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 20px;
+    color: blue;
+}
+
+th {
+    background-color: green;
+}
